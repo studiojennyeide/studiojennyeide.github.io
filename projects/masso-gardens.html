@@ -232,5 +232,39 @@
     </div>
   </footer>
 
+
+
+  <script>
+  const _ch=document.createElement('div'),_cv=document.createElement('div'),_dot=document.createElement('div'),GAP=12,COLOR='#D4607A';
+  Object.assign(_ch.style,{position:'fixed',top:'0',left:'0',width:'100vw',height:'1px',background:COLOR,pointerEvents:'none',zIndex:'9999',opacity:'0',transition:'opacity 0.1s ease'});
+  Object.assign(_cv.style,{position:'fixed',top:'0',left:'0',width:'1px',height:'100vh',background:COLOR,pointerEvents:'none',zIndex:'9999',opacity:'0',transition:'opacity 0.1s ease'});
+  Object.assign(_dot.style,{position:'fixed',width:'4px',height:'4px',border:'1.5px solid '+COLOR,borderRadius:'50%',pointerEvents:'none',zIndex:'9999',opacity:'0',transform:'translate(-50%,-50%)',transition:'opacity 0.1s ease'});
+  document.body.append(_ch,_cv,_dot);document.body.style.cursor='none';
+  document.addEventListener('mousemove',e=>{const x=e.clientX,y=e.clientY;_ch.style.top=y+'px';_ch.style.background=`linear-gradient(to right,${COLOR} ${x-GAP}px,transparent ${x-GAP}px,transparent ${x+GAP}px,${COLOR} ${x+GAP}px)`;_cv.style.left=x+'px';_cv.style.background=`linear-gradient(to bottom,${COLOR} ${y-GAP}px,transparent ${y-GAP}px,transparent ${y+GAP}px,${COLOR} ${y+GAP}px)`;_dot.style.left=x+'px';_dot.style.top=y+'px';});
+  document.addEventListener('mouseenter',()=>[_ch,_cv,_dot].forEach(el=>el.style.opacity='1'));
+  document.addEventListener('mouseleave',()=>[_ch,_cv,_dot].forEach(el=>el.style.opacity='0'));
+  </script>
+
+
+<script>
+  /* Safari fix: show the crosshair on the first mouse movement (Safari does not
+     fire "mouseenter" on the page), hide it when the mouse leaves the window,
+     and keep the normal cursor on touch screens. */
+  (function () {
+    var parts = [_ch, _cv, _dot];
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.body.style.cursor = '';
+      parts.forEach(function (el) { el.style.display = 'none'; });
+      return;
+    }
+    document.addEventListener('mousemove', function () {
+      parts.forEach(function (el) { el.style.opacity = '1'; });
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', function () {
+      parts.forEach(function (el) { el.style.opacity = '0'; });
+    });
+  })();
+</script>
+
 </body>
 </html>

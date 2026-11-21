@@ -186,5 +186,26 @@
   });
 </script>
 
+
+<script>
+  /* Safari fix: show the crosshair on the first mouse movement (Safari does not
+     fire "mouseenter" on the page), hide it when the mouse leaves the window,
+     and keep the normal cursor on touch screens. */
+  (function () {
+    var parts = [_ch, _cv, _dot];
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.body.style.cursor = '';
+      parts.forEach(function (el) { el.style.display = 'none'; });
+      return;
+    }
+    document.addEventListener('mousemove', function () {
+      parts.forEach(function (el) { el.style.opacity = '1'; });
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', function () {
+      parts.forEach(function (el) { el.style.opacity = '0'; });
+    });
+  })();
+</script>
+
 </body>
 </html>
