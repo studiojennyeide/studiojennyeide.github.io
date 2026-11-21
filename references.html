@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>References | Jenny Halvorsen Eide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="references.css" />
+</head>
+<body>
+
+  <!-- =====================
+       NAVIGATION
+       ===================== -->
+  <nav class="nav">
+    <a href="index.html" class="nav-mark">Jenny Halvorsen Eide</a>
+    <ul class="nav-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="references.html" class="nav-active">References</a></li>
+      <li><a href="mailto:jenny.halvorsen.eide@gmail.com" class="nav-contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- =====================
+       PAGE HEADER
+       ===================== -->
+  <div class="section-label" style="max-width: var(--max-width); margin: clamp(3rem, 6vw, 5rem) auto 0; padding: 0 var(--gutter);">Archive</div>
+
+  <!-- =====================
+       REFERENCES
+       ===================== -->
+  <section class="references-section">
+    <div class="references-inner">
+
+      <!-- Filter row -->
+      <div class="filter-row">
+        <button class="filter-btn active" onclick="filter(this,'all')">All</button>
+        <button class="filter-btn" onclick="filter(this,'book')">Books</button>
+        <button class="filter-btn" onclick="filter(this,'building')">Buildings</button>
+        <button class="filter-btn" onclick="filter(this,'place')">Places</button>
+        <button class="filter-btn" onclick="filter(this,'article')">Articles</button>
+        <span class="ref-count" id="count"></span>
+      </div>
+
+      <!-- The scatter field — cards are placed here by JavaScript -->
+      <div class="scatter-field" id="field"></div>
+
+    </div>
+  </section>
+
+  <!-- =====================
+       FOOTER
+       ===================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-name">Jenny Halvorsen Eide</p>
+        <a href="mailto:jenny.halvorsen.eide@gmail.com" class="footer-email">jenny.halvorsen.eide@gmail.com</a>
+      </div>
+      <div class="footer-right">
+        <p class="footer-note">Oslo &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================
+       CURSOR (same as all pages)
+       ===================== -->
+  <script>
+    const _ch = document.createElement('div');
+    const _cv = document.createElement('div');
+    const _dot = document.createElement('div');
+    const GAP = 12;
+    const COLOR = '#D4607A';
+    Object.assign(_ch.style, { position:'fixed',top:'0',left:'0',width:'100vw',height:'1px',background:COLOR,pointerEvents:'none',zIndex:'9999',opacity:'0',transition:'opacity 0.1s ease' });
+    Object.assign(_cv.style, { position:'fixed',top:'0',left:'0',width:'1px',height:'100vh',background:COLOR,pointerEvents:'none',zIndex:'9999',opacity:'0',transition:'opacity 0.1s ease' });
+    Object.assign(_dot.style, { position:'fixed',width:'4px',height:'4px',border:'1.5px solid '+COLOR,borderRadius:'50%',pointerEvents:'none',zIndex:'9999',opacity:'0',transform:'translate(-50%,-50%)',transition:'opacity 0.1s ease' });
+    document.body.append(_ch,_cv,_dot);
+    document.body.style.cursor='none';
+    document.addEventListener('mousemove',(e)=>{ const x=e.clientX,y=e.clientY; _ch.style.top=y+'px'; _ch.style.background=`linear-gradient(to right,${COLOR} ${x-GAP}px,transparent ${x-GAP}px,transparent ${x+GAP}px,${COLOR} ${x+GAP}px)`; _cv.style.left=x+'px'; _cv.style.background=`linear-gradient(to bottom,${COLOR} ${y-GAP}px,transparent ${y-GAP}px,transparent ${y+GAP}px,${COLOR} ${y+GAP}px)`; _dot.style.left=x+'px';_dot.style.top=y+'px'; });
+    document.addEventListener('mouseenter',()=>{ [_ch,_cv,_dot].forEach(el=>el.style.opacity='1'); });
+    document.addEventListener('mouseleave',()=>{ [_ch,_cv,_dot].forEach(el=>el.style.opacity='0'); });
+  </script>
+
+  <!-- =====================
+       REFERENCES DATA + LAYOUT
+       ✏️ Add your references to the `refs` array below.
+       Each entry needs:
+         type     — 'book' | 'building' | 'place' | 'article'
+         name     — title of the work or place
+         author   — author, architect, or location
+         img      — path to your image, e.g. 'images/ref-pattern-language.jpg'
+                    (leave as '' to show a coloured placeholder)
+         color    — placeholder background color (used when no image)
+         w        — card width in pixels (set to match image proportions)
+         h        — card height in pixels
+         note     — your short personal note (2–4 sentences)
+         where    — where/when you encountered it
+       ===================== -->
+  <script>
+    const refs = [
+
+      // ─── ✏️ YOUR REFERENCES ────────────────────────────────────────────────
+      // Copy and paste a block below to add a new reference.
+      // Set img: 'images/your-photo.jpg' when you have a real image.
+      // ───────────────────────────────────────────────────────────────────────
+
+      {
+        type: 'book',
+        name: 'A Pattern Language',
+        author: 'Christopher Alexander, 1977',
+        img: '',               // ✏️ e.g. 'images/ref-pattern-language.jpg'
+        color: '#C8DDD5',
+        w: 160, h: 210,
+        note: 'The idea that spaces are held together by recurring patterns, and that these patterns can be named, shared and rebuilt, underpins how I think about threshold spaces in housing.',
+        where: 'Read in Valencia, 2023'
+      },
+      {
+        type: 'building',
+        name: 'Thermal Baths Vals',
+        author: 'Peter Zumthor, 1996',
+        img: '',
+        color: '#DDE8D5',
+        w: 200, h: 145,
+        note: 'Being inside it changes your understanding of what stone can do. The silence is architectural, not an absence of sound but a material quality of the space itself.',
+        where: 'Visited Vals, Switzerland, 2022'
+      },
+      {
+        type: 'place',
+        name: 'Ría de Vigo',
+        author: 'Galicia, Spain',
+        img: '',
+        color: '#E8DDD5',
+        w: 215, h: 148,
+        note: 'The estuary as edge condition, where the town dissolves into tidal flat. The Massó site sits on exactly this threshold, and this landscape gave me the vocabulary for how to treat it.',
+        where: 'Site research visit, 2024'
+      },
+      {
+        type: 'book',
+        name: 'The Eyes of the Skin',
+        author: 'Juhani Pallasmaa, 1996',
+        img: '',
+        color: '#D5DDE8',
+        w: 150, h: 205,
+        note: 'Architecture perceived through all the senses, not just sight. Made me question what it means to design for elderly residents: the haptic, the thermal, the acoustic.',
+        where: 'Read in Oslo, 2024'
+      },
+      {
+        type: 'building',
+        name: "Maggie's Centre Dundee",
+        author: 'Frank Gehry, 2003',
+        img: '',
+        color: '#E8E5D5',
+        w: 185, h: 150,
+        note: 'A building that holds grief without being sombre. The relationship between interior warmth and the garden outside is the gradient I tried to create in the housing programme.',
+        where: 'Visited Dundee, 2021'
+      },
+      {
+        type: 'article',
+        name: 'The Garden as Political Space',
+        author: 'Jane Hutton, 2020',
+        img: '',
+        color: '#DDD5E8',
+        w: 205, h: 128,
+        note: 'Botanical collections are never neutral. They carry the politics of what was collected, where, by whom. Made me think harder about whose ecology the Massó garden typologies represent.',
+        where: 'Read during thesis research, 2024'
+      },
+      {
+        type: 'place',
+        name: 'Botanical Garden Oslo',
+        author: 'Tøyen, Oslo',
+        img: '',
+        color: '#D5E8E0',
+        w: 170, h: 178,
+        note: 'The way the garden moves from formal beds to wilder margins, and how people slow down as it gets less controlled. That gradient of wildness informed the garden sequence at Massó.',
+        where: 'Visited many times, 2019–present'
+      },
+
+      // ─── ADD MORE REFERENCES HERE ──────────────────────────────────────────
+      // { type: 'book', name: '', author: '', img: '', color: '#C8DDD5', w: 160, h: 200, note: '', where: '' },
+
+    ]; // ← end of refs array
+
+
+    // =====================================================================
+    // FIXED POSITIONS
+    // Each entry maps to the ref at the same index in the refs array above.
+    // x = distance from left edge (px)
+    // y = distance from top (px)
+    // Add a new {x, y} entry for each new reference you add above.
+    // The page width available is roughly 900px on desktop.
+    // =====================================================================
+    const POSITIONS = [
+      { x: 40,  y: 30  },  // A Pattern Language
+      { x: 290, y: 60  },  // Thermal Baths Vals
+      { x: 560, y: 20  },  // Ría de Vigo
+      { x: 100, y: 300 },  // Eyes of the Skin
+      { x: 380, y: 270 },  // Maggie's Centre
+      { x: 640, y: 250 },  // Garden as Political Space
+      { x: 200, y: 530 },  // Botanical Garden Oslo
+    ];
+
+
+    // =====================================================================
+    // LAYOUT ENGINE — no need to edit below this line
+    // =====================================================================
+    const field = document.getElementById('field');
+
+    function buildCards(data) {
+      field.innerHTML = '';
+      let maxBottom = 0;
+
+      data.forEach((ref) => {
+        const globalIndex = refs.indexOf(ref);
+        const pos = POSITIONS[globalIndex];
+        maxBottom = Math.max(maxBottom, pos.y + ref.h + 60);
+
+        const card = document.createElement('div');
+        card.className = 'ref-card';
+        card.dataset.type = ref.type;
+        card.style.cssText = `left:${pos.x}px;top:${pos.y}px;width:${ref.w}px;`;
+
+        const imgContent = ref.img
+          ? `<img src="${ref.img}" alt="${ref.name}" class="card-img" />`
+          : `<div class="card-img-placeholder" style="background:${ref.color};"></div>`;
+
+        card.innerHTML = `
+          <div class="card-inner" style="width:${ref.w}px;height:${ref.h}px;">
+            ${imgContent}
+            <div class="note-overlay">
+              <span class="note-type">${ref.type}</span>
+              <span class="note-name">${ref.name}</span>
+              <span class="note-author">${ref.author}</span>
+              <div class="note-divider"></div>
+              <span class="note-text">${ref.note}</span>
+              <span class="note-where">${ref.where}</span>
+            </div>
+          </div>`;
+
+        field.appendChild(card);
+
+        requestAnimationFrame(() => {
+          setTimeout(() => card.classList.add('visible'), globalIndex * 60);
+        });
+      });
+
+      field.style.minHeight = (maxBottom + 80) + 'px';
+    }
+
+    function filter(btn, type) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filtered = type === 'all' ? refs : refs.filter(r => r.type === type);
+      document.getElementById('count').textContent =
+        filtered.length + (filtered.length === 1 ? ' entry' : ' entries');
+      document.querySelectorAll('.ref-card').forEach(c => c.classList.remove('visible'));
+      setTimeout(() => buildCards(filtered), 250);
+    }
+
+    // Initial render
+    buildCards(refs);
+    document.getElementById('count').textContent = refs.length + ' entries';
+
+  </script>
+
+</body>
+</html>

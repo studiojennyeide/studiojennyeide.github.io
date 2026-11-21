@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jenny Halvorsen Eide | Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .landing {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg);
+    }
+
+    /* ── Nav: no name, links only ── */
+    .landing .nav {
+      position: relative;
+      flex-shrink: 0;
+      border-bottom: none;
+      justify-content: flex-end; /* push links to the right with no name on left */
+    }
+
+    /* ── Middle: name block, grows to fill space above drawing ── */
+    .landing-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end; /* push name toward the drawing */
+      padding: 0 var(--gutter) 2rem;
+    }
+
+    .landing-eyebrow {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .landing-name h1 {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .landing-name-line {
+      display: block;
+      width: clamp(1.5rem, 3vw, 2.5rem);
+      height: 1.5px;
+      background: var(--sage);
+      margin-top: 1rem;
+    }
+
+    /* ── Drawing: anchored to bottom, half width ── */
+    .landing-drawing {
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .landing-drawing img {
+      width: 50%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      html, body { overflow: auto; }
+      .landing { height: auto; min-height: 100vh; }
+      .landing-drawing img { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="landing">
+
+  <!-- Nav: links only, no name -->
+  <nav class="nav">
+    <ul class="nav-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="mailto:jenny.halvorsen.eide@gmail.com" class="nav-contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Name block -->
+  <div class="landing-content">
+    <div class="landing-name">
+      <p class="landing-eyebrow">Junior architect, Oslo</p>
+      <h1>Jenny<br />Halvorsen Eide</h1>
+    </div>
+  </div>
+
+  <!-- Drawing anchored to bottom -->
+  <div class="landing-drawing">
+    <img
+      src="images/cover-drawing.png"
+      alt="Section drawing of Massó Gardens by Jenny Halvorsen Eide"
+    />
+  </div>
+
+</div>
+
+<!-- Cursor -->
+<script>
+  const _ch = document.createElement('div');
+  const _cv = document.createElement('div');
+  const _dot = document.createElement('div');
+  const GAP = 12;
+  const COLOR = '#D4607A';
+
+  Object.assign(_ch.style, {
+    position:'fixed', top:'0', left:'0', width:'100vw', height:'1px',
+    background: COLOR, pointerEvents:'none', zIndex:'9999', opacity:'0',
+    transition:'opacity 0.1s ease'
+  });
+  Object.assign(_cv.style, {
+    position:'fixed', top:'0', left:'0', width:'1px', height:'100vh',
+    background: COLOR, pointerEvents:'none', zIndex:'9999', opacity:'0',
+    transition:'opacity 0.1s ease'
+  });
+  Object.assign(_dot.style, {
+    position:'fixed', width:'4px', height:'4px',
+    border: '1.5px solid ' + COLOR, borderRadius:'50%',
+    pointerEvents:'none', zIndex:'9999', opacity:'0',
+    transform:'translate(-50%, -50%)', transition:'opacity 0.1s ease'
+  });
+
+  document.body.append(_ch, _cv, _dot);
+  document.body.style.cursor = 'none';
+
+  document.addEventListener('mousemove', (e) => {
+    const x = e.clientX, y = e.clientY;
+
+    _ch.style.top = y + 'px';
+    _ch.style.background = `linear-gradient(to right,
+      ${COLOR} ${x - GAP}px, transparent ${x - GAP}px,
+      transparent ${x + GAP}px, ${COLOR} ${x + GAP}px)`;
+
+    _cv.style.left = x + 'px';
+    _cv.style.background = `linear-gradient(to bottom,
+      ${COLOR} ${y - GAP}px, transparent ${y - GAP}px,
+      transparent ${y + GAP}px, ${COLOR} ${y + GAP}px)`;
+
+    _dot.style.left = x + 'px';
+    _dot.style.top = y + 'px';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    [_ch, _cv, _dot].forEach(el => el.style.opacity = '1');
+  });
+  document.addEventListener('mouseleave', () => {
+    [_ch, _cv, _dot].forEach(el => el.style.opacity = '0');
+  });
+</script>
+
+</body>
+</html>
