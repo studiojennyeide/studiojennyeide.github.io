@@ -21,7 +21,7 @@
       <li><a href="work.html">Work</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="references.html" class="nav-active">References</a></li>
-      <li><a href="mailto:jenny.halvorsen.eide@gmail.com" class="nav-contact">Contact</a></li>
+      <li><a href="#contact" class="nav-contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -55,11 +55,12 @@
   <!-- =====================
        FOOTER
        ===================== -->
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="footer-inner">
-      <div class="footer-left">
-        <p class="footer-name">Jenny Halvorsen Eide</p>
+      <div class="footer-left footer-links">
         <a href="mailto:jenny.halvorsen.eide@gmail.com" class="footer-email">jenny.halvorsen.eide@gmail.com</a>
+        <a href="https://www.linkedin.com/in/jennyhalvorseneide" class="footer-email" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/jenny_eide_osl/" class="footer-email" target="_blank" rel="noopener">Instagram</a>
       </div>
       <div class="footer-right">
         <p class="footer-note">Oslo &copy; 2026</p>
@@ -105,79 +106,29 @@
     const refs = [
 
       // ─── ✏️ YOUR REFERENCES ────────────────────────────────────────────────
-      // Copy and paste a block below to add a new reference.
-      // Set img: 'images/your-photo.jpg' when you have a real image.
+      // Copy a block below to add a new reference, and add a position for it
+      // in POSITIONS further down (same order).
       // ───────────────────────────────────────────────────────────────────────
 
       {
         type: 'book',
-        name: 'A Pattern Language',
-        author: 'Christopher Alexander, 1977',
-        img: '',               // ✏️ e.g. 'images/ref-pattern-language.jpg'
-        color: '#C8DDD5',
-        w: 160, h: 210,
-        note: 'The idea that spaces are held together by recurring patterns, and that these patterns can be named, shared and rebuilt, underpins how I think about threshold spaces in housing.',
+        name: 'Everyday Matters: Contemporary approaches to Architecture',
+        author: 'Vanessa Grossman, Ciro Miguel, 2022',
+        img: 'images/references/ref_everyday matters.jpg',
+        color: '#D5DDE8',
+        w: 200, h: 332,
+        note: '',
         where: 'Read in Valencia, 2023'
       },
       {
-        type: 'building',
-        name: 'Thermal Baths Vals',
-        author: 'Peter Zumthor, 1996',
-        img: '',
-        color: '#DDE8D5',
-        w: 200, h: 145,
-        note: 'Being inside it changes your understanding of what stone can do. The silence is architectural, not an absence of sound but a material quality of the space itself.',
-        where: 'Visited Vals, Switzerland, 2022'
-      },
-      {
         type: 'place',
-        name: 'Ría de Vigo',
-        author: 'Galicia, Spain',
-        img: '',
+        name: 'Aït Ben Haddou',
+        author: 'Morocco',
+        img: 'images/references/ref-ait-ben-haddou.webp',   // own photo
         color: '#E8DDD5',
-        w: 215, h: 148,
-        note: 'The estuary as edge condition, where the town dissolves into tidal flat. The Massó site sits on exactly this threshold, and this landscape gave me the vocabulary for how to treat it.',
-        where: 'Site research visit, 2024'
-      },
-      {
-        type: 'book',
-        name: 'The Eyes of the Skin',
-        author: 'Juhani Pallasmaa, 1996',
-        img: '',
-        color: '#D5DDE8',
-        w: 150, h: 205,
-        note: 'Architecture perceived through all the senses, not just sight. Made me question what it means to design for elderly residents: the haptic, the thermal, the acoustic.',
-        where: 'Read in Oslo, 2024'
-      },
-      {
-        type: 'building',
-        name: "Maggie's Centre Dundee",
-        author: 'Frank Gehry, 2003',
-        img: '',
-        color: '#E8E5D5',
-        w: 185, h: 150,
-        note: 'A building that holds grief without being sombre. The relationship between interior warmth and the garden outside is the gradient I tried to create in the housing programme.',
-        where: 'Visited Dundee, 2021'
-      },
-      {
-        type: 'article',
-        name: 'The Garden as Political Space',
-        author: 'Jane Hutton, 2020',
-        img: '',
-        color: '#DDD5E8',
-        w: 205, h: 128,
-        note: 'Botanical collections are never neutral. They carry the politics of what was collected, where, by whom. Made me think harder about whose ecology the Massó garden typologies represent.',
-        where: 'Read during thesis research, 2024'
-      },
-      {
-        type: 'place',
-        name: 'Botanical Garden Oslo',
-        author: 'Tøyen, Oslo',
-        img: '',
-        color: '#D5E8E0',
-        w: 170, h: 178,
-        note: 'The way the garden moves from formal beds to wilder margins, and how people slow down as it gets less controlled. That gradient of wildness informed the garden sequence at Massó.',
-        where: 'Visited many times, 2019–present'
+        w: 180, h: 240,
+        note: '',               // ✏️ write why this place matters to you
+        where: 'Visited 2024'
       },
 
       // ─── ADD MORE REFERENCES HERE ──────────────────────────────────────────
@@ -195,13 +146,8 @@
     // The page width available is roughly 900px on desktop.
     // =====================================================================
     const POSITIONS = [
-      { x: 40,  y: 30  },  // A Pattern Language
-      { x: 290, y: 60  },  // Thermal Baths Vals
-      { x: 560, y: 20  },  // Ría de Vigo
-      { x: 100, y: 300 },  // Eyes of the Skin
-      { x: 380, y: 270 },  // Maggie's Centre
-      { x: 640, y: 250 },  // Garden as Political Space
-      { x: 200, y: 530 },  // Botanical Garden Oslo
+      { x: 60,  y: 30 },  // Everyday Matters
+      { x: 380, y: 90 },  // Aït Ben Haddou
     ];
 
 

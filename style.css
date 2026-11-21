@@ -1,3 +1,6 @@
+/* Montserrat italics, so <em> text uses the real italic letters */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400;1,500&display=swap');
+
 /* ============================================
    JENNY HALVORSEN EIDE — PORTFOLIO STYLESHEET
    Updated to match visual language of Massó Gardens thesis panels
@@ -332,7 +335,11 @@ img { display: block; width: 100%; height: auto; }
   gap: 1rem;
 }
 
-.footer-left {}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+}
 
 .footer-name {
   font-family: var(--font-display);
